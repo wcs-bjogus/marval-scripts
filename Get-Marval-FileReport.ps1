@@ -23,8 +23,6 @@ Write-Host "Collecting files"
 $array = @()
 # Find files in sub-folders
 $files = Get-ChildItem $marval.Path -Attributes !Directory -Recurse
-
-$filescount=($files | Measure-Object –Line).Lines
  
 # Calculate size in MB for files
 $size = $Null
