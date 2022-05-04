@@ -17,12 +17,12 @@ break
 }
 #Define Marval install path
 Write-Host "Found Path:" $marval.Path
-
+$version = $marval.Version
 Write-Host "Collecting files"
 #Empty Array 
 $array = @()
 # Find files in sub-folders
-$files = Get-ChildItem $marval.Path -Attributes !Directory -Recurse
+$files = Get-ChildItem $marval.Path -Attributes !Directory -Recurse -Exclude *.eml,*.log
  
 # Calculate size in MB for files
 $size = $Null
@@ -45,4 +45,4 @@ Filehash = $md5
 }
 
 # Generate Report Results in your Current Folder
-$array|Export-Csv -Path $env:COMPUTERNAME-Marval_file_report.csv -NoTypeInformation
+$array|Export-Csv -Path $env:COMPUTERNAME-Marval_$version-file_report.csv -NoTypeInformation
