@@ -1,4 +1,4 @@
-﻿# Get-Marval-FileReport.ps1
+# Get-Marval-FileReport.ps1
 <#
 Author: Björn Gustavsson, Westcode.se
 Right click .ps1 file and Open with PowerShell
@@ -35,11 +35,13 @@ $counter++
  
 $md5 = (Get-FileHash -Algorithm md5 $file).hash
 $sizeinmb = [math]::Round(($size / 1mb), 1)
+$sizeinkb = [math]::Round(($size / 1kb), 1)
 # Add pscustomobjects to array
 $array += [pscustomobject]@{
 File = $file
 Filehash = $md5
 'Size(MB)' = $sizeinmb
+'Size(KB)' = $sizeinkb
 }
 
 }
